@@ -1,0 +1,135 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+package com.mycompany.bidimensional;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class BIDIMENSIONAL {
+
+    public static void main(String[] args) {
+        int [][] matriz = generar_matriz();
+        mostrar_matriz(matriz);
+        máxima_columna(matriz);
+        mínima_columna(matriz);
+        máxima_fila(matriz);
+        mínima_fila(matriz);
+    }
+
+    public static int[][] generar_matriz() {
+        Scanner p = new Scanner(System.in);
+        Random ran = new Random();
+
+        System.out.print("Ingrese cantidad de filas: ");
+        int filas = p.nextInt();
+        System.out.print("Ingrese cantidad de columnas: ");
+        int columnas = p.nextInt();
+        int[][] matriz = new int[filas][columnas];
+
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                matriz[i][j]=ran.nextInt(1, 20);}
+            }
+        
+        return matriz;
+        }
+    
+    public static void mostrar_matriz(int [][] matriz){
+        System.out.println("");
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(matriz[i][j] + "\t");}
+            System.out.print("\n");
+            }
+        System.out.print("\n");
+    }
+    
+    public static void máxima_fila(int [] [] matriz) {
+        double max_fila = Integer.MIN_VALUE;
+        int num_fila = 0;
+        for (int i = 0; i < matriz.length; i++) {
+            double sum_fila = 0;
+            for (int j = 0; j < matriz[0].length; j++){    
+                sum_fila = sum_fila + matriz[i][j];
+            }
+            if (max_fila < sum_fila){
+                num_fila = i+1;
+                max_fila = sum_fila;
+            }
+            System.out.println("La "+(i+1)+"° fila suma: "+sum_fila);
+        }
+        System.out.println("");
+        System.out.println("La fila de mayor valor es la "+num_fila+"° con un valor de "+max_fila+".");
+        for (int j = 0; j < matriz[num_fila].length; j++){    
+                System.out.print(matriz[num_fila-1][j]+"\t");
+            }
+        System.out.println("");
+    }
+    
+    public static void mínima_fila(int [] [] matriz) {
+        double min_fila = Integer.MAX_VALUE;
+        int num_fila = 0;
+        for (int i = 0; i < matriz.length; i++) {
+            double sum_fila = 0;
+            for (int j = 0; j < matriz[0].length; j++){    
+                sum_fila = sum_fila + matriz[i][j];
+            }
+            if (min_fila > sum_fila){
+                num_fila = i+1;
+                min_fila = sum_fila;
+            }
+            System.out.println("La "+(i+1)+"° fila suma: "+sum_fila);
+        }
+        System.out.println("");
+        System.out.print("La fila de menor valor es la "+num_fila+"° con un valor de "+min_fila+".\n");
+        for (int j = 0; j < matriz[num_fila].length; j++){    
+                System.out.print(matriz[num_fila-1][j]+"\t");
+            }
+        System.out.println("");
+    }
+    
+    public static void máxima_columna(int [] [] matriz) {
+        double max_colum = Integer.MIN_VALUE;
+        int num_colum = 0;
+        for (int i = 0; i < matriz[0].length; i++) {
+            double sum_colum = 0;
+            for (int j = 0; j < matriz.length; j++){    
+                sum_colum = sum_colum + matriz[j][i];
+            }
+            if (max_colum < sum_colum){
+                num_colum = i+1;
+                max_colum = sum_colum;
+            }
+            System.out.println("La "+(i+1)+"° columna suma: "+sum_colum);
+        }
+        System.out.println("");
+        System.out.print("La columna de mayor valor es la "+num_colum+"° con un valor de "+max_colum+".\n");
+        for (int j = 0; j < num_colum; j++){    
+                System.out.print(matriz[j][num_colum-1]+"\n");
+            }
+        System.out.println("");
+    }
+    
+    public static void mínima_columna(int [] [] matriz) {
+        double min_colum = Integer.MAX_VALUE;
+        int num_colum = 0;
+        for (int i = 0; i < matriz[0].length; i++) {
+            double sum_colum = 0;
+            for (int j = 0; j < matriz.length; j++){    
+                sum_colum = sum_colum + matriz[j][i];
+            }
+            if (min_colum > sum_colum){
+                num_colum = i+1;
+                min_colum = sum_colum;
+            }
+            System.out.println("La "+(i+1)+"° columna suma: "+sum_colum);
+        }
+        System.out.println("");
+        System.out.print("La columna de menor valor es la "+num_colum+"° con un valor de "+min_colum+".\n");
+        for (int j = 0; j < num_colum; j++){    
+                System.out.print(matriz[j][num_colum-1]+"\n");
+        }
+        System.out.println("");
+    }  
+}
